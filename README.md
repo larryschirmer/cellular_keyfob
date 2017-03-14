@@ -23,3 +23,13 @@ I used the [particle electron](https://docs.particle.io/guide/getting-started/st
 ![](https://github.com/larryschirmer/cellular_keyfob/raw/master/pictures/30855970841_1fe563afc8_o.jpg)
 There is a lot to talk about in dealing with the micro controller. A lot more than is relevent in this doc, so I'll just link [the test code repo](https://github.com/larryschirmer/electron_car_hack) and the [video of triggers I setup from the command line](https://www.flickr.com/photos/78229770@N05/30522003470/). In the test, instead of saturating the base pins of the keyfob, I have an LED turning on/off. The bottom window in the video is my serial output and the top window is making actual celular calls to the board and triggering the installed loops. It is a lot of fun and the sky is the limit, but there is no time for that, so lets just keep going here.
 ##### 3. Putting it all together
+Everything works in theory. The project got held up for about a month while I worked through a single bug. I wrote an API that, through a URL endpoint, made calls to the Particle Platform, that called the board over 3G and triggered the onboard function to open the port that saturated the base pin to lock the car doors. The key fob would flash and the board would return "1" meaning "yes, I in fact did all that you asked, what more do you want of me", but the car doors would not lock. Why! I tried [darlington pairs](https://en.wikipedia.org/wiki/Darlington_transistor), I tried more volatage, and several different circuit configurations. You know, once I get on something, I can't let it go. Now that I have had it on my dash for a while I bet I could have just used a 10µF capacitor to smooth the output from the particle board. That is what I'll do before I solder the board into a more permenent proto. My solution was a hack. If one output from the board was not going to be enough, then two output pins will be used. So in the code I have two pins output in parallel to each of the NPN base pins. It's not pretty, a capacitor would be prettier. 
+I also opted to use 4 AA batteries rather than the 2 coin cells. I get better Amp Hour capacity and better performance in the cold. 
+![](https://github.com/larryschirmer/cellular_keyfob/raw/master/pictures/32530252605_afac3fd83b_o.jpg)
+
+### Moving Forward
+
+
+
+
+
